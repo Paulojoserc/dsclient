@@ -21,10 +21,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.pjcosta.dsclient.dto.ClientDTO;
 import com.pjcosta.dsclient.services.ClientService;
 
+@RestController
+@RequestMapping(value="/clients")
 public class ClientResource {
-	@RestController
-	@RequestMapping(value = "/client")
-	public class ProductResource {
+	//public class ProductResource {
 
 		@Autowired
 		private ClientService service;
@@ -64,5 +64,5 @@ public class ClientResource {
 			service.delete(id);		
 			return ResponseEntity.noContent().build();
 		}
-}
+//}
 }

@@ -9,6 +9,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.pjcosta.dsclient.dto.ClientDTO;
@@ -17,6 +18,7 @@ import com.pjcosta.dsclient.repositories.ClientRepository;
 import com.pjcosta.dsclient.services.exception.DatabaseException;
 import com.pjcosta.dsclient.services.exception.ResourceNotFoundException;
 
+@Service
 public class ClientService {
 
 	@Autowired
@@ -48,7 +50,7 @@ public class ClientService {
 	@Transactional
 	public ClientDTO update(Long id, ClientDTO dto) {
 		try {
-			Client entity = client.getOne(id);
+			Client entity = client.getById(id); 
 			entity.setName(dto.getName());
 			entity = client.save(entity);
 			return new ClientDTO(entity);
